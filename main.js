@@ -1,6 +1,12 @@
 (function () {
   var STORE_PREFIX = "a2z:checked:";
 
+  // Global UI state for performance
+  var gState = {
+    grouped: null, // { [step]: { title, subs: { [sub]: { title, items: [...] } } } }
+    counts: { steps: {}, subs: {} },
+  };
+
   function linkEl(href, label) {
     if (!href) return null;
     var a = document.createElement("a");
@@ -21,32 +27,53 @@
   }
 
   function groupByStep(data) {
-    var map = new Map();
+    var grouped = {};
     data.forEach(function (it) {
-      var step = it.step != null ? it.step : "Unknown";
-      var sub = it.substep != null ? it.substep : "Unknown";
-      var stepKey = String(step);
-      var subKey = String(sub);
-      if (!map.has(stepKey))
-        map.set(stepKey, {
-          title: it.stepTitle || "Step " + stepKey,
-          sub: new Map(),
-        });
-      var stepObj = map.get(stepKey);
-      if (!stepObj.sub.has(subKey))
-        stepObj.sub.set(subKey, {
-          title: it.substepTitle || "Step " + stepKey + "." + subKey,
-          items: [],
-        });
-      stepObj.sub.get(subKey).items.push(it);
+      var stepKey = String(it.step != null ? it.step : "Unknown");
+      var subKey = String(it.substep != null ? it.substep : "Unknown");
+      if (!grouped[stepKey]) grouped[stepKey] = { title: it.stepTitle || "Step " + stepKey, subs: {} };
+      if (!grouped[stepKey].subs[subKey]) grouped[stepKey].subs[subKey] = { title: it.substepTitle || ("Step " + stepKey + "." + subKey), items: [] };
+      grouped[stepKey].subs[subKey].items.push(it);
     });
-    return map;
+    return grouped;
+  }
+
+  function makeKey(it) {
+    return it.checkboxId
+      ? String(it.checkboxId)
+      : "s" + (it.step || "") + "-" + (it.substep || "") + "-" + (it.title || "").toLowerCase();
+  }
+
+  function preloadCounts(grouped) {
+    var counts = { steps: {}, subs: {} };
+    Object.keys(grouped).forEach(function (stepKey) {
+      var step = grouped[stepKey];
+      var stepCount = (counts.steps[stepKey] = { done: 0, total: 0 });
+      Object.keys(step.subs).forEach(function (subKey) {
+        var sub = step.subs[subKey];
+        var subCount = (counts.subs[stepKey + "." + subKey] = { done: 0, total: 0 });
+        sub.items.forEach(function (it) {
+          subCount.total++;
+          stepCount.total++;
+          var key = makeKey(it);
+          try {
+            if (localStorage.getItem(STORE_PREFIX + key) === "1") {
+              subCount.done++;
+              stepCount.done++;
+            }
+          } catch (e) {}
+        });
+      });
+    });
+    return counts;
   }
 
   function renderList(container, data) {
-    var grouped = groupByStep(data);
+    gState.grouped = groupByStep(data);
+    gState.counts = preloadCounts(gState.grouped);
 
-    grouped.forEach(function (stepObj, stepKey) {
+    Object.keys(gState.grouped).forEach(function (stepKey) {
+      var stepObj = gState.grouped[stepKey];
       var stepDetails = document.createElement("details");
       stepDetails.open = false;
       var stepSummary = document.createElement("summary");
@@ -60,7 +87,8 @@
         '"></span>';
       stepDetails.appendChild(stepSummary);
 
-      stepObj.sub.forEach(function (subObj, subKey) {
+      Object.keys(stepObj.subs).forEach(function (subKey) {
+        var subObj = stepObj.subs[subKey];
         var subDetails = document.createElement("details");
         subDetails.open = false;
         var subSummary = document.createElement("summary");
@@ -78,75 +106,71 @@
           '"></span>';
         subDetails.appendChild(subSummary);
 
-        var ulItems = document.createElement("ul");
-        subObj.items.forEach(function (it) {
-          var li = document.createElement("li");
-          var row = document.createElement("div");
-          row.className = "item-row";
+        // Lazy-render items on first expand
+        subDetails.addEventListener(
+          "toggle",
+          function () {
+            if (subDetails.open && !subDetails._rendered) {
+              var frag = document.createDocumentFragment();
+              var ulItems = document.createElement("ul");
+              subObj.items.forEach(function (it) {
+                var li = document.createElement("li");
+                li.dataset.step = stepKey;
+                li.dataset.sub = subKey;
+                var row = document.createElement("div");
+                row.className = "item-row";
 
-          // Title cell with checkbox + title/link
-          var titleCell = document.createElement("div");
-          titleCell.className = "title-cell";
-          var cb = document.createElement("input");
-          cb.type = "checkbox";
-          var key = it.checkboxId
-            ? String(it.checkboxId)
-            : "s" +
-              (it.step || "") +
-              "-" +
-              (it.substep || "") +
-              "-" +
-              (it.title || "").toLowerCase();
-          cb.dataset.key = key;
-          try {
-            cb.checked = localStorage.getItem(STORE_PREFIX + key) === "1";
-          } catch (e) {}
-          cb.addEventListener("change", function (e) {
-            try {
-              if (e.target.checked)
-                localStorage.setItem(STORE_PREFIX + key, "1");
-              else localStorage.removeItem(STORE_PREFIX + key);
-            } catch (err) {}
-          });
-          titleCell.appendChild(cb);
+                var titleCell = document.createElement("div");
+                titleCell.className = "title-cell";
+                var cb = document.createElement("input");
+                cb.type = "checkbox";
+                var key = makeKey(it);
+                cb.dataset.key = key;
+                try {
+                  cb.checked = localStorage.getItem(STORE_PREFIX + key) === "1";
+                } catch (e) {}
+                titleCell.appendChild(cb);
+                var title = it.title || "(untitled)";
+                if (it.article) {
+                  var a = linkEl(it.article, title);
+                  a.className = "item-title";
+                  titleCell.appendChild(a);
+                } else {
+                  var dv = document.createElement("div");
+                  dv.className = "item-title";
+                  dv.textContent = title;
+                  titleCell.appendChild(dv);
+                }
+                row.appendChild(titleCell);
 
-          var title = it.title || "(untitled)";
-          if (it.article) {
-            var a = linkEl(it.article, title);
-            a.className = "item-title";
-            titleCell.appendChild(a);
-          } else {
-            var dv = document.createElement("div");
-            dv.className = "item-title";
-            dv.textContent = title;
-            titleCell.appendChild(dv);
-          }
-          row.appendChild(titleCell);
+                function linkCol(url, label) {
+                  var col = document.createElement("div");
+                  col.className = "link-col";
+                  if (url) {
+                    var wrapper = document.createElement("div");
+                    wrapper.className = "links";
+                    var el = linkEl(url, label);
+                    wrapper.appendChild(el);
+                    col.appendChild(wrapper);
+                  }
+                  return col;
+                }
 
-          // Helper to create a link column
-          function linkCol(url, label) {
-            var col = document.createElement("div");
-            col.className = "link-col";
-            if (url) {
-              var wrapper = document.createElement("div");
-              wrapper.className = "links";
-              var el = linkEl(url, label);
-              wrapper.appendChild(el);
-              col.appendChild(wrapper);
+                row.appendChild(linkCol(it.gfg, "GfG"));
+                row.appendChild(linkCol(it.leetcode, "LeetCode"));
+                row.appendChild(linkCol(it.solution, "Solution"));
+                row.appendChild(linkCol(it.video, "Video"));
+
+                li.appendChild(row);
+                ulItems.appendChild(li);
+              });
+              frag.appendChild(ulItems);
+              subDetails.appendChild(frag);
+              subDetails._rendered = true;
             }
-            return col;
-          }
-
-          row.appendChild(linkCol(it.gfg, "GfG"));
-          row.appendChild(linkCol(it.leetcode, "LeetCode"));
-          row.appendChild(linkCol(it.solution, "Solution"));
-          row.appendChild(linkCol(it.video, "Video"));
-
-          li.appendChild(row);
-          ulItems.appendChild(li);
-        });
-
-        subDetails.appendChild(ulItems);
+          },
+          { once: true }
+        );
         stepDetails.appendChild(subDetails);
       });
 
@@ -154,78 +178,62 @@
     });
   }
 
-  function computeCounts() {
-    var data = [];
-    var all = document.querySelectorAll(
-      '.title-cell input[type="checkbox"][data-key]'
-    );
-    all.forEach(function (cb) {
-      // Find enclosing details to read step/substep from badge text present in summaries
-      var row = cb.closest("li");
-      var subDetails = row && row.closest("details");
-      var stepDetails =
-        subDetails &&
-        subDetails.parentElement &&
-        subDetails.parentElement.closest("details");
-      // Extract step/sub from the data attributes we set on summary counts
-      var subCount =
-        subDetails &&
-        subDetails.querySelector('summary .counts[data-scope="sub"]');
-      var stepCount =
-        stepDetails &&
-        stepDetails.querySelector('summary .counts[data-scope="step"]');
-      var step = stepCount ? stepCount.getAttribute("data-step") : null;
-      var sub = subCount ? subCount.getAttribute("data-substep") : null;
-      if (step && sub) {
-        data.push({ step: step, sub: sub, checked: cb.checked });
-      }
-    });
-    var counts = { steps: {}, subs: {} };
-    data.forEach(function (it) {
-      var sk = it.step,
-        sb = it.sub;
-      var sKey = sk;
-      var subKey = sk + "." + sb;
-      if (!counts.steps[sKey]) counts.steps[sKey] = { done: 0, total: 0 };
-      if (!counts.subs[subKey]) counts.subs[subKey] = { done: 0, total: 0 };
-      counts.steps[sKey].total++;
-      counts.subs[subKey].total++;
-      if (it.checked) {
-        counts.steps[sKey].done++;
-        counts.subs[subKey].done++;
-      }
-    });
-    return counts;
+  function updateCountEl(scope, step, sub) {
+    if (scope === "step") {
+      var el = document.querySelector(
+        'summary .counts[data-scope="step"][data-step="' + step + '"]'
+      );
+      var c = gState.counts.steps[step] || { done: 0, total: 0 };
+      if (el) el.textContent = "(" + c.done + "/" + c.total + ")";
+    } else if (scope === "sub") {
+      var el2 = document.querySelector(
+        'summary .counts[data-scope="sub"][data-step="' +
+          step +
+          '"][data-substep="' +
+          sub +
+          '"]'
+      );
+      var c2 = gState.counts.subs[step + "." + sub] || { done: 0, total: 0 };
+      if (el2) el2.textContent = "(" + c2.done + "/" + c2.total + ")";
+    }
   }
 
-  function renderStepwiseCounts() {
-    var counts = computeCounts();
-    // Update step counts
-    document
-      .querySelectorAll('summary .counts[data-scope="step"]')
-      .forEach(function (el) {
-        var step = el.getAttribute("data-step");
-        var c = counts.steps[step] || { done: 0, total: 0 };
-        el.textContent = "(" + c.done + "/" + c.total + ")";
-      });
-    // Update substep counts
-    document
-      .querySelectorAll('summary .counts[data-scope="sub"]')
-      .forEach(function (el) {
-        var step = el.getAttribute("data-step");
-        var sub = el.getAttribute("data-substep");
-        var c = counts.subs[step + "." + sub] || { done: 0, total: 0 };
-        el.textContent = "(" + c.done + "/" + c.total + ")";
-      });
+  function renderAllCounts() {
+    Object.keys(gState.counts.steps).forEach(function (step) {
+      updateCountEl("step", step);
+    });
+    Object.keys(gState.counts.subs).forEach(function (k) {
+      var parts = k.split(".");
+      updateCountEl("sub", parts[0], parts[1]);
+    });
   }
 
   var content = document.getElementById("content");
   if (Array.isArray(window.data) && window.data.length) {
     renderList(content, window.data);
-    renderStepwiseCounts();
+    renderAllCounts();
+    // Incremental updates without DOM rescans
     content.addEventListener("change", function (e) {
       if (e.target && e.target.matches('.title-cell input[type="checkbox"]')) {
-        renderStepwiseCounts();
+        var li = e.target.closest("li");
+        if (!li) return;
+        var step = String(li.dataset.step);
+        var sub = String(li.dataset.sub);
+        var stepKey = step;
+        var subKey = step + "." + sub;
+        var delta = e.target.checked ? 1 : -1;
+        if (gState.counts.steps[stepKey]) gState.counts.steps[stepKey].done += delta;
+        if (gState.counts.subs[subKey]) gState.counts.subs[subKey].done += delta;
+        // Persist storage
+        var key = e.target.dataset.key;
+        try {
+          if (e.target.checked)
+            localStorage.setItem(STORE_PREFIX + key, "1");
+          else localStorage.removeItem(STORE_PREFIX + key);
+        } catch (err) {}
+        // Update affected counters only
+        updateCountEl("step", step);
+        updateCountEl("sub", step, sub);
       }
     });
   } else {
