@@ -1,6 +1,16 @@
 (function () {
   var STORE_PREFIX = "a2z:checked:";
 
+  // Prefer inline JSON (<script type="application/json" id="a2z-json">) if present
+  function loadData() {
+    var inline = document.getElementById('a2z-json');
+    if (inline && inline.textContent) {
+      try { return JSON.parse(inline.textContent); } catch (e) { console.error('Invalid inline JSON', e); }
+    }
+    if (Array.isArray(window.data)) return window.data;
+    return [];
+  }
+
   // Global UI state for performance
   var gState = {
     grouped: null, // { [step]: { title, subs: { [sub]: { title, items: [...] } } } }
@@ -209,8 +219,9 @@
   }
 
   var content = document.getElementById("content");
-  if (Array.isArray(window.data) && window.data.length) {
-    renderList(content, window.data);
+  var DATA = loadData();
+  if (Array.isArray(DATA) && DATA.length) {
+    renderList(content, DATA);
     renderAllCounts();
     // Incremental updates without DOM rescans
     content.addEventListener("change", function (e) {

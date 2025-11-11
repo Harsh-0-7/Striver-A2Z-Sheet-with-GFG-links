@@ -1,0 +1,9 @@
+{
+  "name": "striver-a2z-viewer",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "build:inline": "node scripts/build-inline-json.js"
+  }
+}
+
