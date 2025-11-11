@@ -38,14 +38,14 @@
       var stepDetails = document.createElement('details');
       stepDetails.open = false;
       var stepSummary = document.createElement('summary');
-      stepSummary.innerHTML = '<span class="badge">Step ' + stepKey + '</span> ' + (stepObj.title || '');
+      stepSummary.innerHTML = '<span class="badge">Step ' + stepKey + '</span> ' + (stepObj.title || '') + ' <span class="counts" data-scope="step" data-step="' + stepKey + '"></span>';
       stepDetails.appendChild(stepSummary);
 
       stepObj.sub.forEach(function (subObj, subKey) {
         var subDetails = document.createElement('details');
         subDetails.open = false;
         var subSummary = document.createElement('summary');
-        subSummary.innerHTML = '<span class="badge small">' + stepKey + '.' + subKey + '</span> ' + (subObj.title || '');
+        subSummary.innerHTML = '<span class="badge small">' + stepKey + '.' + subKey + '</span> ' + (subObj.title || '') + ' <span class="counts" data-scope="sub" data-step="' + stepKey + '" data-substep="' + subKey + '"></span>';
         subDetails.appendChild(subSummary);
 
         var ulItems = document.createElement('ul');
@@ -114,9 +114,66 @@
     });
   }
 
+  function computeCounts() {
+    var data = [];
+    var all = document.querySelectorAll('.title-cell input[type="checkbox"][data-key]');
+    all.forEach(function (cb) {
+      // Find enclosing details to read step/substep from badge text present in summaries
+      var row = cb.closest('li');
+      var subDetails = row && row.closest('details');
+      var stepDetails = subDetails && subDetails.parentElement && subDetails.parentElement.closest('details');
+      // Extract step/sub from the data attributes we set on summary counts
+      var subCount = subDetails && subDetails.querySelector('summary .counts[data-scope="sub"]');
+      var stepCount = stepDetails && stepDetails.querySelector('summary .counts[data-scope="step"]');
+      var step = stepCount ? stepCount.getAttribute('data-step') : null;
+      var sub = subCount ? subCount.getAttribute('data-substep') : null;
+      if (step && sub) {
+        data.push({ step: step, sub: sub, checked: cb.checked });
+      }
+    });
+    var counts = { steps: {}, subs: {} };
+    data.forEach(function (it) {
+      var sk = it.step, sb = it.sub;
+      var sKey = sk;
+      var subKey = sk + '.' + sb;
+      if (!counts.steps[sKey]) counts.steps[sKey] = { done: 0, total: 0 };
+      if (!counts.subs[subKey]) counts.subs[subKey] = { done: 0, total: 0 };
+      counts.steps[sKey].total++;
+      counts.subs[subKey].total++;
+      if (it.checked) {
+        counts.steps[sKey].done++;
+        counts.subs[subKey].done++;
+      }
+    });
+    return counts;
+  }
+
+  function renderStepwiseCounts() {
+    var counts = computeCounts();
+    // Update step counts
+    document.querySelectorAll('summary .counts[data-scope="step"]').forEach(function (el) {
+      var step = el.getAttribute('data-step');
+      var c = counts.steps[step] || { done: 0, total: 0 };
+      el.textContent = '(' + c.done + '/' + c.total + ')';
+    });
+    // Update substep counts
+    document.querySelectorAll('summary .counts[data-scope="sub"]').forEach(function (el) {
+      var step = el.getAttribute('data-step');
+      var sub = el.getAttribute('data-substep');
+      var c = counts.subs[step + '.' + sub] || { done: 0, total: 0 };
+      el.textContent = '(' + c.done + '/' + c.total + ')';
+    });
+  }
+
   var content = document.getElementById('content');
   if (Array.isArray(window.data) && window.data.length) {
     renderList(content, window.data);
+    renderStepwiseCounts();
+    content.addEventListener('change', function (e) {
+      if (e.target && e.target.matches('.title-cell input[type="checkbox"]')) {
+        renderStepwiseCounts();
+      }
+    });
   } else {
     content.textContent = 'No data found.';
   }
