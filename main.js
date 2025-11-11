@@ -97,6 +97,16 @@
         '"></span>';
       stepDetails.appendChild(stepSummary);
 
+      // Accordion: when a step opens, close other steps
+      stepDetails.addEventListener("toggle", function () {
+        if (!stepDetails.open) return;
+        var parent = content;
+        for (var i = 0; i < parent.children.length; i++) {
+          var sib = parent.children[i];
+          if (sib !== stepDetails && sib.tagName === 'DETAILS' && sib.open) sib.open = false;
+        }
+      });
+
       Object.keys(stepObj.subs).forEach(function (subKey) {
         var subObj = stepObj.subs[subKey];
         var subDetails = document.createElement("details");
@@ -115,6 +125,15 @@
           subKey +
           '"></span>';
         subDetails.appendChild(subSummary);
+
+        // Accordion: when a substep opens, close sibling substeps under same step
+        subDetails.addEventListener("toggle", function () {
+          if (!subDetails.open) return;
+          for (var j = 0; j < stepDetails.children.length; j++) {
+            var child = stepDetails.children[j];
+            if (child !== subDetails && child.tagName === 'DETAILS' && child.open) child.open = false;
+          }
+        });
 
         // Lazy-render items on first expand
         subDetails.addEventListener(
@@ -245,6 +264,26 @@
         // Update affected counters only
         updateCountEl("step", step);
         updateCountEl("sub", step, sub);
+      }
+    });
+    // Accordion behavior: only one step open, and only one substep per step
+    content.addEventListener("toggle", function (e) {
+      var el = e.target;
+      if (!el || el.tagName !== 'DETAILS' || !el.open) return; // Only when a <details> is opened
+      var parent = el.parentElement;
+      // If this is a top-level step (parent is #content), close other top-level details
+      if (parent === content) {
+        for (var i = 0; i < parent.children.length; i++) {
+          var sib = parent.children[i];
+          if (sib !== el && sib.tagName === 'DETAILS' && sib.open) sib.open = false;
+        }
+      }
+      // If this is a substep (parent is a step <details>), close sibling substeps under same step
+      if (parent && parent.tagName === 'DETAILS' && parent.parentElement === content) {
+        for (var j = 0; j < parent.children.length; j++) {
+          var child = parent.children[j];
+          if (child !== el && child.tagName === 'DETAILS' && child.open) child.open = false;
+        }
       }
     });
   } else {
