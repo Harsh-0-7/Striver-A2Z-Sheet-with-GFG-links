@@ -1,11 +1,19 @@
 (function () {
-  function link(href, label) {
-    if (!href) return '';
-    var safe = String(href);
-    var text = label || (function () {
-      try { var u = new URL(safe); return u.hostname + u.pathname; } catch (e) { return safe; }
-    })();
-    return '<a href="' + safe + '" target="_blank" rel="noopener">' + text + '</a>';
+  var STORE_PREFIX = 'a2z:checked:';
+
+  function linkEl(href, label) {
+    if (!href) return null;
+    var a = document.createElement('a');
+    a.href = String(href);
+    a.target = '_blank';
+    a.rel = 'noopener';
+    if (label) {
+      a.textContent = label;
+    } else {
+      try { var u = new URL(href); a.textContent = u.hostname + u.pathname; }
+      catch (e) { a.textContent = String(href); }
+    }
+    return a;
   }
 
   function groupByStep(data) {
@@ -43,20 +51,58 @@
         var ulItems = document.createElement('ul');
         subObj.items.forEach(function (it) {
           var li = document.createElement('li');
+          var row = document.createElement('div');
+          row.className = 'item-row';
+
+          // Title cell with checkbox + title/link
+          var titleCell = document.createElement('div');
+          titleCell.className = 'title-cell';
+          var cb = document.createElement('input');
+          cb.type = 'checkbox';
+          var key = (it.checkboxId) ? String(it.checkboxId) : ('s' + (it.step||'') + '-' + (it.substep||'') + '-' + (it.title||'').toLowerCase());
+          cb.dataset.key = key;
+          try { cb.checked = localStorage.getItem(STORE_PREFIX + key) === '1'; } catch (e) {}
+          cb.addEventListener('change', function (e) {
+            try {
+              if (e.target.checked) localStorage.setItem(STORE_PREFIX + key, '1');
+              else localStorage.removeItem(STORE_PREFIX + key);
+            } catch (err) {}
+          });
+          titleCell.appendChild(cb);
+
           var title = it.title || '(untitled)';
-          var cols = [];
-          // Title column as a link to article if present
           if (it.article) {
-            cols.push('<a class="item-title" href="' + it.article + '" target="_blank" rel="noopener">' + title + '</a>');
+            var a = linkEl(it.article, title);
+            a.className = 'item-title';
+            titleCell.appendChild(a);
           } else {
-            cols.push('<div class="item-title">' + title + '</div>');
+            var dv = document.createElement('div');
+            dv.className = 'item-title';
+            dv.textContent = title;
+            titleCell.appendChild(dv);
           }
-          // Link columns (vertically stacked within each type)
-          cols.push('<div class="link-col">' + (it.gfg ? ('<div class="links">' + link(it.gfg, 'GfG') + '</div>') : '') + '</div>');
-          cols.push('<div class="link-col">' + (it.leetcode ? ('<div class="links">' + link(it.leetcode, 'LeetCode') + '</div>') : '') + '</div>');
-          cols.push('<div class="link-col">' + (it.solution ? ('<div class="links">' + link(it.solution, 'Solution') + '</div>') : '') + '</div>');
-          cols.push('<div class="link-col">' + (it.video ? ('<div class="links">' + link(it.video, 'Video') + '</div>') : '') + '</div>');
-          li.innerHTML = '<div class="item-row">' + cols.join('') + '</div>';
+          row.appendChild(titleCell);
+
+          // Helper to create a link column
+          function linkCol(url, label) {
+            var col = document.createElement('div');
+            col.className = 'link-col';
+            if (url) {
+              var wrapper = document.createElement('div');
+              wrapper.className = 'links';
+              var el = linkEl(url, label);
+              wrapper.appendChild(el);
+              col.appendChild(wrapper);
+            }
+            return col;
+          }
+
+          row.appendChild(linkCol(it.gfg, 'GfG'));
+          row.appendChild(linkCol(it.leetcode, 'LeetCode'));
+          row.appendChild(linkCol(it.solution, 'Solution'));
+          row.appendChild(linkCol(it.video, 'Video'));
+
+          li.appendChild(row);
           ulItems.appendChild(li);
         });
 
