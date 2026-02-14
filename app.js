@@ -3,6 +3,7 @@ import { renderList } from './render.js';
 import { updateCountEl, renderAllCounts, updateProgressBars } from './progress.js';
 
 var gState = { grouped: null, counts: { steps: {}, subs: {} } };
+var THEME_KEY = 'a2z:theme';
 
 function ensureTitleCountEl() {
   try {
@@ -202,9 +203,40 @@ async function main() {
 
     // Filters
     setupFilters(content);
+
+    // Theme toggle
+    setupTheme();
   } else {
     content.textContent = 'No data found.';
   }
 }
 
 document.addEventListener('DOMContentLoaded', main);
+
+function setupTheme() {
+  var btn = document.getElementById('theme-toggle');
+  function apply(theme) {
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      if (btn) { btn.textContent = '☀️ Light'; btn.setAttribute('aria-pressed', 'true'); }
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      if (btn) { btn.textContent = '🌙 Dark'; btn.setAttribute('aria-pressed', 'false'); }
+    }
+  }
+  // Initial: use saved theme, else system preference
+  var saved = null;
+  try { saved = localStorage.getItem(THEME_KEY); } catch (e) {}
+  if (saved === 'dark' || saved === 'light') apply(saved);
+  else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) apply('dark');
+  else apply('light');
+
+  if (btn) {
+    btn.addEventListener('click', function () {
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      var next = isDark ? 'light' : 'dark';
+      apply(next);
+      try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+    });
+  }
+}
