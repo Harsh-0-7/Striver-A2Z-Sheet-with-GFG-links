@@ -12,7 +12,7 @@ export function renderList(container, data, gState) {
       '<span class="badge">Step ' + stepKey + '</span> ' +
       (stepObj.title || '') +
       ' <span class="counts" data-scope="step" data-step="' + stepKey + '"></span>' +
-      ' <div class="progress step" data-step="' + stepKey + '"><div class="bar" style="width:0%"></div></div>';
+      ' <div class="progress step" role="progressbar" aria-label="Step progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0%" data-step="' + stepKey + '"><div class="bar" style="width:0%"></div></div>';
     stepDetails.appendChild(stepSummary);
 
     Object.keys(stepObj.subs).forEach(function (subKey) {
@@ -26,7 +26,7 @@ export function renderList(container, data, gState) {
         '<span class="badge small">' + stepKey + '.' + subKey + '</span> ' +
         (subObj.title || '') +
         ' <span class="counts" data-scope="sub" data-step="' + stepKey + '" data-substep="' + subKey + '"></span>' +
-        ' <div class="progress sub" data-step="' + stepKey + '" data-substep="' + subKey + '"><div class="bar" style="width:0%"></div></div>';
+        ' <div class="progress sub" role="progressbar" aria-label="Substep progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0%" data-step="' + stepKey + '" data-substep="' + subKey + '"><div class="bar" style="width:0%"></div></div>';
       subDetails.appendChild(subSummary);
 
       // Lazy-render items on first expand
@@ -57,6 +57,8 @@ export function renderList(container, data, gState) {
               a.rel = 'noopener';
               a.textContent = title;
               a.className = 'item-title';
+              // Link label clarity for SRs
+              a.setAttribute('aria-label', title + ' (Article)');
               titleCell.appendChild(a);
             } else {
               var dv = document.createElement('div');
@@ -64,6 +66,8 @@ export function renderList(container, data, gState) {
               dv.textContent = title;
               titleCell.appendChild(dv);
             }
+            // Directly label checkbox for screen readers
+            cb.setAttribute('aria-label', 'Mark \'' + title + '\' as solved');
             row.appendChild(titleCell);
 
             function linkCol(url, label) {
@@ -77,6 +81,7 @@ export function renderList(container, data, gState) {
                 a.target = '_blank';
                 a.rel = 'noopener';
                 a.textContent = label;
+                a.setAttribute('aria-label', label + ' for ' + title);
                 wrapper.appendChild(a);
                 col.appendChild(wrapper);
               }
@@ -104,4 +109,3 @@ export function renderList(container, data, gState) {
     container.appendChild(stepDetails);
   });
 }
-

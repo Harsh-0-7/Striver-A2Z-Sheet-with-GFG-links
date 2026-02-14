@@ -24,6 +24,19 @@ export function setBar(wrapEl, done, total) {
   var bar = wrapEl.querySelector('.bar');
   if (bar) bar.style.width = clampPct(done, total) + '%';
   applyState(wrapEl, classify(done, total));
+  // If this is an ARIA progressbar, sync attributes and text
+  if (wrapEl.getAttribute && wrapEl.getAttribute('role') === 'progressbar') {
+    var pct = clampPct(done, total);
+    wrapEl.setAttribute('aria-valuenow', String(pct));
+    var text = done + ' solved of ' + total + ' (' + pct + '%)';
+    if (wrapEl.classList.contains('global')) {
+      wrapEl.setAttribute('aria-valuetext', text);
+      var status = document.querySelector('.global-progress .progress-text');
+      if (status) status.textContent = text;
+    } else {
+      wrapEl.setAttribute('aria-valuetext', pct + '%');
+    }
+  }
 }
 
 // DOM helpers

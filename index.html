@@ -11,20 +11,20 @@
     <div class="wrap">
       <header class="site-header">
         <h1>Striver A2Z DSA Sheet</h1>
-        <div class="global-progress">
-          <div class="progress global" aria-label="Overall progress">
+        <section class="global-progress" aria-label="Progress overview">
+          <div class="progress global" role="progressbar" aria-label="Overall progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0 solved of 0 (0%)">
             <div class="bar" style="width:0%"></div>
           </div>
-          <div class="progress-text muted"></div>
-        </div>
+          <div class="progress-text muted" role="status" aria-live="polite"></div>
+        </section>
         <nav class="filters" aria-label="Quick filters and theme">
-          <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
-          <button type="button" class="filter-btn" data-filter="unsolved" aria-pressed="false">Unsolved</button>
-          <button type="button" class="filter-btn" data-filter="solved" aria-pressed="false">Solved</button>
+          <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true" aria-controls="content">All</button>
+          <button type="button" class="filter-btn" data-filter="unsolved" aria-pressed="false" aria-controls="content">Unsolved</button>
+          <button type="button" class="filter-btn" data-filter="solved" aria-pressed="false" aria-controls="content">Solved</button>
           <button type="button" id="theme-toggle" class="filter-btn theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">🌙 Dark</button>
         </nav>
       </header>
-      <div id="content"></div>
+      <main id="content" aria-live="polite"></main>
     </div>
     <script type="module" src="./app.js"></script>
     <noscript>

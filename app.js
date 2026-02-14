@@ -130,6 +130,7 @@ function setupFilters(content) {
 
 function showLoading() {
   var content = document.getElementById('content');
+  if (content) content.setAttribute('aria-busy', 'true');
   var wrap = document.createElement('div');
   wrap.className = 'loading';
   wrap.textContent = 'Loading problems…';
@@ -139,6 +140,8 @@ function showLoading() {
 function hideLoading() {
   var n = document.querySelector('#content .loading');
   if (n) n.remove();
+  var content = document.getElementById('content');
+  if (content) content.removeAttribute('aria-busy');
 }
 
 async function main() {
