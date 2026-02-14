@@ -2600,7 +2600,7 @@ window.data = [
   {
     step: 10,
     substep: 1,
-    stepTitle: "Sliding Window &Two Pointer Combined Problems",
+    stepTitle: "Sliding Window & Two Pointer Combined Problems",
     substepTitle: "Medium Problems",
     checkboxId: "atoz_dsa_223",
     title: "Longest Substring Without Repeating Characters",
@@ -2615,7 +2615,7 @@ window.data = [
   {
     step: 10,
     substep: 1,
-    stepTitle: "Sliding Window &Two Pointer Combined Problems",
+    stepTitle: "Sliding Window & Two Pointer Combined Problems",
     substepTitle: "Medium Problems",
     checkboxId: "atoz_dsa_224",
     title: "Max Consecutive Ones III",
@@ -2625,7 +2625,7 @@ window.data = [
   {
     step: 10,
     substep: 1,
-    stepTitle: "Sliding Window &Two Pointer Combined Problems",
+    stepTitle: "Sliding Window & Two Pointer Combined Problems",
     substepTitle: "Medium Problems",
     checkboxId: "atoz_dsa_225",
     title: "Fruit Into Baskets",
@@ -2634,7 +2634,7 @@ window.data = [
   {
     step: 10,
     substep: 1,
-    stepTitle: "Sliding Window &Two Pointer Combined Problems",
+    stepTitle: "Sliding Window & Two Pointer Combined Problems",
     substepTitle: "Medium Problems",
     checkboxId: "atoz_dsa_226",
     title: "longest repeating character replacement",
@@ -2645,7 +2645,7 @@ window.data = [
   {
     step: 10,
     substep: 1,
-    stepTitle: "Sliding Window &Two Pointer Combined Problems",
+    stepTitle: "Sliding Window & Two Pointer Combined Problems",
     substepTitle: "Medium Problems",
     checkboxId: "atoz_dsa_227",
     title: "Binary subarray with sum",
@@ -2655,7 +2655,7 @@ window.data = [
   {
     step: 10,
     substep: 1,
-    stepTitle: "Sliding Window &Two Pointer Combined Problems",
+    stepTitle: "Sliding Window & Two Pointer Combined Problems",
     substepTitle: "Medium Problems",
     checkboxId: "atoz_dsa_228",
     title: "Count number of nice subarrays",
@@ -2665,7 +2665,7 @@ window.data = [
   {
     step: 10,
     substep: 1,
-    stepTitle: "Sliding Window &Two Pointer Combined Problems",
+    stepTitle: "Sliding Window & Two Pointer Combined Problems",
     substepTitle: "Medium Problems",
     checkboxId: "atoz_dsa_229",
     title: "Number of substring containing all three characters",
@@ -2676,7 +2676,7 @@ window.data = [
   {
     step: 10,
     substep: 1,
-    stepTitle: "Sliding Window &Two Pointer Combined Problems",
+    stepTitle: "Sliding Window & Two Pointer Combined Problems",
     substepTitle: "Medium Problems",
     checkboxId: "atoz_dsa_230",
     title: "Maximum point you can obtain from cards",
@@ -2687,7 +2687,7 @@ window.data = [
   {
     step: 10,
     substep: 2,
-    stepTitle: "Sliding Window &Two Pointer Combined Problems",
+    stepTitle: "Sliding Window & Two Pointer Combined Problems",
     substepTitle: "Hard Problems",
     checkboxId: "atoz_dsa_231",
     title: "Longest Substring with At Most K Distinct Characters",
@@ -2698,7 +2698,7 @@ window.data = [
   {
     step: 10,
     substep: 2,
-    stepTitle: "Sliding Window &Two Pointer Combined Problems",
+    stepTitle: "Sliding Window & Two Pointer Combined Problems",
     substepTitle: "Hard Problems",
     checkboxId: "atoz_dsa_231",
     title: "Subarray with k different integers",
@@ -2709,7 +2709,7 @@ window.data = [
   {
     step: 10,
     substep: 2,
-    stepTitle: "Sliding Window &Two Pointer Combined Problems",
+    stepTitle: "Sliding Window & Two Pointer Combined Problems",
     substepTitle: "Hard Problems",
     checkboxId: "atoz_dsa_232",
     title: "Minimum Window Substring",
@@ -2719,7 +2719,7 @@ window.data = [
   {
     step: 10,
     substep: 2,
-    stepTitle: "Sliding Window &Two Pointer Combined Problems",
+    stepTitle: "Sliding Window & Two Pointer Combined Problems",
     substepTitle: "Hard Problems",
     checkboxId: "atoz_dsa_233",
     title: "Minimum Window Subsequence",
