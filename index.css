@@ -10,12 +10,7 @@
   --brand: #0b69c7;
   --brand-weak: #eaf2ff;
   --border: #e4e7ec;
-  --shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 1px 3px rgba(16, 24, 40, 0.08);
-  --gray-weak: #f2f4f7;
   --gray-border: #e4e7ec;
-  --green: #12b76a;
-  --green-weak: #ecfdf3;
-  --green-border: #a6f4c5;
 
   /* Spacing (4/8 scale) */
   --space-1: 4px;
@@ -30,12 +25,9 @@
 
   /* Elevation */
   --elev-1: 0 1px 2px rgba(16, 24, 40, 0.06), 0 1px 3px rgba(16, 24, 40, 0.08);
-  --elev-2: 0 4px 10px rgba(16, 24, 40, 0.10), 0 1px 4px rgba(16, 24, 40, 0.06);
-  --elev-3: 0 6px 16px rgba(16, 24, 40, 0.12), 0 2px 6px rgba(16, 24, 40, 0.08);
 
   /* Durations */
   --duration-fast: 150ms;
-  --duration-normal: 250ms;
 
   /* Z-index */
   --z-header: 10;
@@ -45,19 +37,10 @@
   /* Extended palette for states */
   --gray-100: #f2f4f7;
   --gray-300: #d0d5dd;
-  --red-50: #fee2e2;
-  --red-200: #fecaca;
-  --red-600: #dc2626;
-  --red-700: #b91c1c;
-  --amber-50: #fff7e6;
-  --amber-200: #ffe2b3;
-  --amber-600: #d97706;
-  --amber-700: #b45309;
   --green-50: #e8fbf0;
   --green-200: #b6f0d1;
   --green-100: #d9f7e8;
   --green-300: #8ee6bb;
-  --green-600: #16a34a;
   --green-700: #067647;
 }
 
@@ -194,32 +177,20 @@ summary:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
   transition: background var(--duration-fast) ease, border-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease, transform var(--duration-fast) ease;
 }
 
-/* Step hover: lift + soft gradient */
-#content > details > summary:hover {
+/* Step hover */
+#content > details > summary:hover,
+details[open] > summary:hover {
   background: linear-gradient(180deg, #ffffff, #f4f9ff);
   border-color: #bcd4ff;
   transform: translateY(-1px);
   box-shadow: 0 6px 16px rgba(16, 24, 40, 0.12), 0 2px 6px rgba(16, 24, 40, 0.08);
 }
-/* Step hover when open */
-details[open] > summary:hover {
-  background: linear-gradient(180deg, #f8fbff, #eef5ff);
-  border-color: #bcd4ff;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(16, 24, 40, 0.12), 0 2px 6px rgba(16, 24, 40, 0.08);
-}
 
-/* Substep base removes heavy shadow, add strong hover */
+/* Substep hover */
 #content > details > details summary { box-shadow: none; }
-#content > details > details summary:hover {
-  background: linear-gradient(180deg, #ffffff, #f7fbff);
-  border-color: #cfe0ff;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(16, 24, 40, 0.10), 0 1px 4px rgba(16, 24, 40, 0.06);
-}
-/* Substep hover when open */
+#content > details > details summary:hover,
 #content > details > details[open] > summary:hover {
-  background: linear-gradient(180deg, #f8fbff, #eef5ff);
+  background: linear-gradient(180deg, #ffffff, #f7fbff);
   border-color: #cfe0ff;
   transform: translateY(-1px);
   box-shadow: 0 4px 10px rgba(16, 24, 40, 0.10), 0 1px 4px rgba(16, 24, 40, 0.06);
@@ -264,11 +235,7 @@ details[open] > summary:hover {
 .counts.is-high { color: #0f7a3a; background: #d4f4e3; border-color: #86e1b9; }
 .counts.is-done { color: var(--green-700); background: #e6f7ec; border-color: #8ce3b5; }
 
-/* =============================================
-   Section Progress
-   ============================================= */
-details .section-progress { margin: 8px 0 0 32px; padding: 0 0 2px; }
-.section-progress .progress { height: 8px; }
+/* (Removed unused .section-progress styles) */
 
 /* Step & Substep summary progress alignment (keep bar at far right) */
 #content > details > summary .progress.step,
@@ -291,7 +258,6 @@ details .section-progress { margin: 8px 0 0 32px; padding: 0 0 2px; }
 /* =============================================
    Structure
    ============================================= */
-#content > details { margin: 10px 0; }
 #content > details { margin: var(--space-3) 0; }
 #content > details > details { margin: 8px 0 8px 16px; padding-left: 12px; border-left: 2px solid var(--border); }
 #content > details > details > ul { margin-left: var(--space-3); }
@@ -382,8 +348,4 @@ li { list-style: none; margin: 8px 0; line-height: 1.3; }
   .item-row { grid-template-columns: 1fr; }
   .links { justify-content: flex-start; }
 }
-/* Type scale utilities (applied selectively) */
-.text-20 { font-size: 20px; }
-.text-16 { font-size: 16px; }
-.text-14 { font-size: 14px; }
-.text-12 { font-size: 12px; }
+/* (Removed unused text utilities) */
