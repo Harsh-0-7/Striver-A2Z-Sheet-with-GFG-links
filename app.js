@@ -127,9 +127,24 @@ function setupFilters(content) {
   applyFilter(current);
 }
 
-function main() {
+function showLoading() {
   var content = document.getElementById('content');
-  var DATA = loadData();
+  var wrap = document.createElement('div');
+  wrap.className = 'loading';
+  wrap.textContent = 'Loading problems…';
+  content.appendChild(wrap);
+}
+
+function hideLoading() {
+  var n = document.querySelector('#content .loading');
+  if (n) n.remove();
+}
+
+async function main() {
+  var content = document.getElementById('content');
+  showLoading();
+  var DATA = await loadData();
+  hideLoading();
   if (Array.isArray(DATA) && DATA.length) {
     // Preload counts before render for progress and filters
     gState.counts = preloadCounts(groupByStep(DATA));

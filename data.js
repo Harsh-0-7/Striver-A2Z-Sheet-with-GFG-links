@@ -1,6 +1,17 @@
 export const STORE_PREFIX = 'a2z:checked:';
 
-export function loadData() {
+export async function loadData() {
+  // Prefer fetching the external, minified payload for faster first paint on Pages/CDNs
+  try {
+    var res = await fetch('./data.min.json', { credentials: 'omit', cache: 'default' });
+    if (res && res.ok) {
+      var json = await res.json();
+      if (Array.isArray(json)) return json;
+    }
+  } catch (e) {
+    // Network unavailable (e.g., file://) or fetch failed — fall through to inline/window fallback
+  }
+  // Fallbacks for local/offline usage
   var inline = document.getElementById('a2z-json');
   if (inline && inline.textContent) {
     try { return JSON.parse(inline.textContent); } catch (e) { console.error('Invalid inline JSON', e); }
@@ -50,4 +61,3 @@ export function preloadCounts(grouped) {
   });
   return counts;
 }
-
