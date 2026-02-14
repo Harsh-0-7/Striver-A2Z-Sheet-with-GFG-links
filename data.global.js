@@ -2068,7 +2068,7 @@ window.data = [
   {
     step: 8,
     substep: 1,
-    stepTitle: "Bit Manipulation [Concepts &Problems] &Advanced Maths",
+    stepTitle: "Bit Manipulation [Concepts & Problems] & Advanced Maths",
     substepTitle: "Learn Bit Manipulation",
     checkboxId: "atoz_dsa_178",
     title: "Introduction to Bit Manipulation [Theory]",
@@ -2077,7 +2077,7 @@ window.data = [
   {
     step: 8,
     substep: 1,
-    stepTitle: "Bit Manipulation [Concepts &Problems] &Advanced Maths",
+    stepTitle: "Bit Manipulation [Concepts & Problems] & Advanced Maths",
     substepTitle: "Learn Bit Manipulation",
     checkboxId: "atoz_dsa_179",
     title: "Check if the i-th bit is set or not",
@@ -2086,7 +2086,7 @@ window.data = [
   {
     step: 8,
     substep: 1,
-    stepTitle: "Bit Manipulation [Concepts &Problems] &Advanced Maths",
+    stepTitle: "Bit Manipulation [Concepts & Problems] & Advanced Maths",
     substepTitle: "Learn Bit Manipulation",
     checkboxId: "atoz_dsa_180",
     title: "Check if a number is odd or not",
@@ -2095,7 +2095,7 @@ window.data = [
   {
     step: 8,
     substep: 1,
-    stepTitle: "Bit Manipulation [Concepts &Problems] &Advanced Maths",
+    stepTitle: "Bit Manipulation [Concepts & Problems] & Advanced Maths",
     substepTitle: "Learn Bit Manipulation",
     checkboxId: "atoz_dsa_181",
     title: "Check if a number is power of 2 or not",
@@ -2105,7 +2105,7 @@ window.data = [
   {
     step: 8,
     substep: 1,
-    stepTitle: "Bit Manipulation [Concepts &Problems] &Advanced Maths",
+    stepTitle: "Bit Manipulation [Concepts & Problems] & Advanced Maths",
     substepTitle: "Learn Bit Manipulation",
     checkboxId: "atoz_dsa_182",
     title: "Count the number of set bits",
@@ -2114,7 +2114,7 @@ window.data = [
   {
     step: 8,
     substep: 1,
-    stepTitle: "Bit Manipulation [Concepts &Problems] &Advanced Maths",
+    stepTitle: "Bit Manipulation [Concepts & Problems] & Advanced Maths",
     substepTitle: "Learn Bit Manipulation",
     checkboxId: "atoz_dsa_183",
     title: "Set/Unset the rightmost unset bit",
@@ -2123,7 +2123,7 @@ window.data = [
   {
     step: 8,
     substep: 1,
-    stepTitle: "Bit Manipulation [Concepts &Problems] &Advanced Maths",
+    stepTitle: "Bit Manipulation [Concepts & Problems] & Advanced Maths",
     substepTitle: "Learn Bit Manipulation",
     checkboxId: "atoz_dsa_184",
     title: "Swap two numbers",
@@ -2132,7 +2132,7 @@ window.data = [
   {
     step: 8,
     substep: 1,
-    stepTitle: "Bit Manipulation [Concepts &Problems] &Advanced Maths",
+    stepTitle: "Bit Manipulation [Concepts & Problems] & Advanced Maths",
     substepTitle: "Learn Bit Manipulation",
     checkboxId: "atoz_dsa_185",
     title:
@@ -2143,7 +2143,7 @@ window.data = [
   {
     step: 8,
     substep: 2,
-    stepTitle: "Bit Manipulation [Concepts &Problems] &Advanced Maths",
+    stepTitle: "Bit Manipulation [Concepts & Problems] & Advanced Maths",
     substepTitle: "Interview Problems",
     checkboxId: "atoz_dsa_186",
     title: "Count number of bits to be flipped to convert A to B",
@@ -2154,7 +2154,7 @@ window.data = [
   {
     step: 8,
     substep: 2,
-    stepTitle: "Bit Manipulation [Concepts &Problems] &Advanced Maths",
+    stepTitle: "Bit Manipulation [Concepts & Problems] & Advanced Maths",
     substepTitle: "Interview Problems",
     checkboxId: "atoz_dsa_187",
     title: "Find the number that appears odd number of times",
@@ -2164,7 +2164,7 @@ window.data = [
   {
     step: 8,
     substep: 2,
-    stepTitle: "Bit Manipulation [Concepts &Problems] &Advanced Maths",
+    stepTitle: "Bit Manipulation [Concepts & Problems] & Advanced Maths",
     substepTitle: "Interview Problems",
     checkboxId: "atoz_dsa_188",
     title: "Power Set",
@@ -2175,7 +2175,7 @@ window.data = [
   {
     step: 8,
     substep: 2,
-    stepTitle: "Bit Manipulation [Concepts &Problems] &Advanced Maths",
+    stepTitle: "Bit Manipulation [Concepts & Problems] & Advanced Maths",
     substepTitle: "Interview Problems",
     checkboxId: "atoz_dsa_189",
     title: "Fnd xor of numbers from L to R",
@@ -2184,7 +2184,7 @@ window.data = [
   {
     step: 8,
     substep: 2,
-    stepTitle: "Bit Manipulation [Concepts &Problems] &Advanced Maths",
+    stepTitle: "Bit Manipulation [Concepts & Problems] & Advanced Maths",
     substepTitle: "Interview Problems",
     checkboxId: "atoz_dsa_190",
     title: "Find the two numbers appearing odd number of times",
@@ -2193,7 +2193,7 @@ window.data = [
   {
     step: 8,
     substep: 3,
-    stepTitle: "Bit Manipulation [Concepts &Problems] &Advanced Maths",
+    stepTitle: "Bit Manipulation [Concepts & Problems] & Advanced Maths",
     substepTitle: "Advanced Maths",
     checkboxId: "atoz_dsa_445",
     title: "Print Prime Factors of a Number",
@@ -2202,7 +2202,7 @@ window.data = [
   {
     step: 8,
     substep: 3,
-    stepTitle: "Bit Manipulation [Concepts &Problems] &Advanced Maths",
+    stepTitle: "Bit Manipulation [Concepts & Problems] & Advanced Maths",
     substepTitle: "Advanced Maths",
     checkboxId: "atoz_dsa_446",
     title: "All Divisors of a Number",
@@ -2211,7 +2211,7 @@ window.data = [
   {
     step: 8,
     substep: 3,
-    stepTitle: "Bit Manipulation [Concepts &Problems] &Advanced Maths",
+    stepTitle: "Bit Manipulation [Concepts & Problems] & Advanced Maths",
     substepTitle: "Advanced Maths",
     checkboxId: "atoz_dsa_447",
     title: "Sieve of Eratosthenes",
@@ -2221,7 +2221,7 @@ window.data = [
   {
     step: 8,
     substep: 3,
-    stepTitle: "Bit Manipulation [Concepts &Problems] &Advanced Maths",
+    stepTitle: "Bit Manipulation [Concepts & Problems] & Advanced Maths",
     substepTitle: "Advanced Maths",
     checkboxId: "atoz_dsa_449",
     title: "Find Prime Factorisation of a Number using Sieve",
@@ -2230,7 +2230,7 @@ window.data = [
   {
     step: 8,
     substep: 3,
-    stepTitle: "Bit Manipulation [Concepts &Problems] &Advanced Maths",
+    stepTitle: "Bit Manipulation [Concepts & Problems] & Advanced Maths",
     substepTitle: "Advanced Maths",
     checkboxId: "atoz_dsa_448",
     title: "Power(n, x)",
@@ -3749,7 +3749,7 @@ window.data = [
   {
     step: 15,
     substep: 1,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Learning",
     checkboxId: "atoz_dsa_320",
     title: "Graph and Types",
@@ -3760,7 +3760,7 @@ window.data = [
   {
     step: 15,
     substep: 1,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Learning",
     checkboxId: "atoz_dsa_321",
     title: "Graph Representation | C++",
@@ -3771,7 +3771,7 @@ window.data = [
   {
     step: 15,
     substep: 1,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Learning",
     checkboxId: "atoz_dsa_322",
     title: "Graph Representation | Java",
@@ -3781,7 +3781,7 @@ window.data = [
   {
     step: 15,
     substep: 1,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Learning",
     checkboxId: "atoz_dsa_323",
     title: "Connected Components | Logic Explanation",
@@ -3792,7 +3792,7 @@ window.data = [
   {
     step: 15,
     substep: 1,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Learning",
     checkboxId: "atoz_dsa_324",
     title: "BFS",
@@ -3804,7 +3804,7 @@ window.data = [
   {
     step: 15,
     substep: 1,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Learning",
     checkboxId: "atoz_dsa_325",
     title: "DFS",
@@ -3815,7 +3815,7 @@ window.data = [
   {
     step: 15,
     substep: 2,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Problems on BFS/DFS",
     checkboxId: "atoz_dsa_326",
     title: "Number of provinces (leetcode)",
@@ -3828,7 +3828,7 @@ window.data = [
   {
     step: 15,
     substep: 2,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Problems on BFS/DFS",
     checkboxId: "atoz_dsa_327",
     title: "Connected Components Problem in Matrix",
@@ -3837,7 +3837,7 @@ window.data = [
   {
     step: 15,
     substep: 2,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Problems on BFS/DFS",
     checkboxId: "atoz_dsa_328",
     title: "Rotten Oranges",
@@ -3849,7 +3849,7 @@ window.data = [
   {
     step: 15,
     substep: 2,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Problems on BFS/DFS",
     checkboxId: "atoz_dsa_329",
     title: "Flood fill",
@@ -3861,7 +3861,7 @@ window.data = [
   {
     step: 15,
     substep: 2,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Problems on BFS/DFS",
     checkboxId: "atoz_dsa_330",
     title: "Cycle Detection in unirected Graph (bfs)",
@@ -3873,7 +3873,7 @@ window.data = [
   {
     step: 15,
     substep: 2,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Problems on BFS/DFS",
     checkboxId: "atoz_dsa_331",
     title: "Cycle Detection in undirected Graph (dfs)",
@@ -3885,7 +3885,7 @@ window.data = [
   {
     step: 15,
     substep: 2,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Problems on BFS/DFS",
     checkboxId: "atoz_dsa_332",
     title: "0/1 Matrix (Bfs Problem)",
@@ -3898,7 +3898,7 @@ window.data = [
   {
     step: 15,
     substep: 2,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Problems on BFS/DFS",
     checkboxId: "atoz_dsa_333",
     title: "Surrounded Regions (dfs)",
@@ -3911,7 +3911,7 @@ window.data = [
   {
     step: 15,
     substep: 2,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Problems on BFS/DFS",
     checkboxId: "atoz_dsa_334",
     title: "Number of Enclaves [flood fill implementation –multisource]",
@@ -3923,7 +3923,7 @@ window.data = [
   {
     step: 15,
     substep: 2,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Problems on BFS/DFS",
     checkboxId: "atoz_dsa_335",
     title: "Word ladder –1",
@@ -3934,7 +3934,7 @@ window.data = [
   {
     step: 15,
     substep: 2,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Problems on BFS/DFS",
     checkboxId: "atoz_dsa_336",
     title: "Word ladder –2",
@@ -3946,7 +3946,7 @@ window.data = [
   {
     step: 15,
     substep: 2,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Problems on BFS/DFS",
     checkboxId: "atoz_dsa_337",
     title: "Number of Distinct Islands [dfs multisource]",
@@ -3958,7 +3958,7 @@ window.data = [
   {
     step: 15,
     substep: 2,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Problems on BFS/DFS",
     checkboxId: "atoz_dsa_338",
     title: "Bipartite Graph (DFS)",
@@ -3971,7 +3971,7 @@ window.data = [
   {
     step: 15,
     substep: 2,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Problems on BFS/DFS",
     checkboxId: "atoz_dsa_339",
     title: "Cycle Detection in Directed Graph (DFS)",
@@ -3984,7 +3984,7 @@ window.data = [
   {
     step: 15,
     substep: 3,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Topo Sort and Problems",
     checkboxId: "atoz_dsa_340",
     title: "Topo Sort",
@@ -3997,7 +3997,7 @@ window.data = [
   {
     step: 15,
     substep: 3,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Topo Sort and Problems",
     checkboxId: "atoz_dsa_341",
     title: "Kahn ’s Algorithm",
@@ -4010,7 +4010,7 @@ window.data = [
   {
     step: 15,
     substep: 3,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Topo Sort and Problems",
     checkboxId: "atoz_dsa_342",
     title: "Cycle Detection in Directed Graph (BFS)",
@@ -4021,7 +4021,7 @@ window.data = [
   {
     step: 15,
     substep: 3,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Topo Sort and Problems",
     checkboxId: "atoz_dsa_343",
     title: "Course Schedule –I",
@@ -4035,7 +4035,7 @@ window.data = [
   {
     step: 15,
     substep: 3,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Topo Sort and Problems",
     checkboxId: "atoz_dsa_344",
     title: "Course Schedule –II",
@@ -4049,7 +4049,7 @@ window.data = [
   {
     step: 15,
     substep: 3,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Topo Sort and Problems",
     checkboxId: "atoz_dsa_345",
     title: "Find eventual safe states",
@@ -4063,7 +4063,7 @@ window.data = [
   {
     step: 15,
     substep: 3,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Topo Sort and Problems",
     checkboxId: "atoz_dsa_346",
     title: "Alien dictionary",
@@ -4077,7 +4077,7 @@ window.data = [
   {
     step: 15,
     substep: 4,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Shortest Path Algorithms and Problems",
     checkboxId: "atoz_dsa_347",
     title: "Shortest Path in UG with unit weights",
@@ -4090,7 +4090,7 @@ window.data = [
   {
     step: 15,
     substep: 4,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Shortest Path Algorithms and Problems",
     checkboxId: "atoz_dsa_348",
     title: "Shortest Path in DAG",
@@ -4103,7 +4103,7 @@ window.data = [
   {
     step: 15,
     substep: 4,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Shortest Path Algorithms and Problems",
     checkboxId: "atoz_dsa_349",
     title: "Djisktra ’s Algorithm",
@@ -4116,7 +4116,7 @@ window.data = [
   {
     step: 15,
     substep: 4,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Shortest Path Algorithms and Problems",
     checkboxId: "atoz_dsa_350",
     title: "Why priority Queue is used in Djisktra ’s Algorithm",
@@ -4129,7 +4129,7 @@ window.data = [
   {
     step: 15,
     substep: 4,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Shortest Path Algorithms and Problems",
     checkboxId: "atoz_dsa_351",
     title: "Shortest path in a binary maze",
@@ -4143,7 +4143,7 @@ window.data = [
   {
     step: 15,
     substep: 4,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Shortest Path Algorithms and Problems",
     checkboxId: "atoz_dsa_352",
     title: "Path with minimum effort",
@@ -4157,7 +4157,7 @@ window.data = [
   {
     step: 15,
     substep: 4,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Shortest Path Algorithms and Problems",
     checkboxId: "atoz_dsa_353",
     title: "Cheapest flights within k stops",
@@ -4171,7 +4171,7 @@ window.data = [
   {
     step: 15,
     substep: 4,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Shortest Path Algorithms and Problems",
     checkboxId: "atoz_dsa_354",
     title: "Network Delay time",
@@ -4181,7 +4181,7 @@ window.data = [
   {
     step: 15,
     substep: 4,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Shortest Path Algorithms and Problems",
     checkboxId: "atoz_dsa_355",
     title: "Number of ways to arrive at destination",
@@ -4196,7 +4196,7 @@ window.data = [
   {
     step: 15,
     substep: 4,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Shortest Path Algorithms and Problems",
     checkboxId: "atoz_dsa_356",
     title:
@@ -4210,7 +4210,7 @@ window.data = [
   {
     step: 15,
     substep: 4,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Shortest Path Algorithms and Problems",
     checkboxId: "atoz_dsa_357",
     title: "Bellman Ford Algorithm",
@@ -4223,7 +4223,7 @@ window.data = [
   {
     step: 15,
     substep: 4,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Shortest Path Algorithms and Problems",
     checkboxId: "atoz_dsa_358",
     title: "Floyd Warshal Algorithm",
@@ -4236,7 +4236,7 @@ window.data = [
   {
     step: 15,
     substep: 4,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Shortest Path Algorithms and Problems",
     checkboxId: "atoz_dsa_359",
     title:
@@ -4251,7 +4251,7 @@ window.data = [
   {
     step: 15,
     substep: 5,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "MinimumSpanningTree/Disjoint Set and Problems",
     checkboxId: "atoz_dsa_360",
     title: "Minimum Spanning Tree",
@@ -4264,7 +4264,7 @@ window.data = [
   {
     step: 15,
     substep: 5,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "MinimumSpanningTree/Disjoint Set and Problems",
     checkboxId: "atoz_dsa_361",
     title: "Prim ’s Algorithm",
@@ -4277,7 +4277,7 @@ window.data = [
   {
     step: 15,
     substep: 5,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "MinimumSpanningTree/Disjoint Set and Problems",
     checkboxId: "atoz_dsa_362",
     title: "Disjoint Set [Union by Rank]",
@@ -4289,7 +4289,7 @@ window.data = [
   {
     step: 15,
     substep: 5,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "MinimumSpanningTree/Disjoint Set and Problems",
     checkboxId: "atoz_dsa_363",
     title: "Disjoint Set [Union by Size]",
@@ -4301,7 +4301,7 @@ window.data = [
   {
     step: 15,
     substep: 5,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "MinimumSpanningTree/Disjoint Set and Problems",
     checkboxId: "atoz_dsa_364",
     title: "Kruskal ’s Algorithm",
@@ -4313,7 +4313,7 @@ window.data = [
   {
     step: 15,
     substep: 5,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "MinimumSpanningTree/Disjoint Set and Problems",
     checkboxId: "atoz_dsa_365",
     title: "Number of operations to make network connected",
@@ -4327,7 +4327,7 @@ window.data = [
   {
     step: 15,
     substep: 5,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "MinimumSpanningTree/Disjoint Set and Problems",
     checkboxId: "atoz_dsa_366",
     title: "Most stones removed with same rows or columns",
@@ -4341,7 +4341,7 @@ window.data = [
   {
     step: 15,
     substep: 5,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "MinimumSpanningTree/Disjoint Set and Problems",
     checkboxId: "atoz_dsa_367",
     title: "Accounts merge",
@@ -4353,7 +4353,7 @@ window.data = [
   {
     step: 15,
     substep: 5,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "MinimumSpanningTree/Disjoint Set and Problems",
     checkboxId: "atoz_dsa_368",
     title: "Number of island II",
@@ -4366,7 +4366,7 @@ window.data = [
   {
     step: 15,
     substep: 5,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "MinimumSpanningTree/Disjoint Set and Problems",
     checkboxId: "atoz_dsa_369",
     title: "Making a Large Island",
@@ -4379,7 +4379,7 @@ window.data = [
   {
     step: 15,
     substep: 5,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "MinimumSpanningTree/Disjoint Set and Problems",
     checkboxId: "atoz_dsa_370",
     title: "Swim in rising water",
@@ -4389,7 +4389,7 @@ window.data = [
   {
     step: 15,
     substep: 6,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Other Algorithms",
     checkboxId: "atoz_dsa_371",
     title: "Bridges in Graph",
@@ -4403,7 +4403,7 @@ window.data = [
   {
     step: 15,
     substep: 6,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Other Algorithms",
     checkboxId: "atoz_dsa_372",
     title: "Articulation Point",
@@ -4415,7 +4415,7 @@ window.data = [
   {
     step: 15,
     substep: 6,
-    stepTitle: "Graphs [Concepts &Problems]",
+    stepTitle: "Graphs [Concepts & Problems]",
     substepTitle: "Other Algorithms",
     checkboxId: "atoz_dsa_373",
     title: "Kosaraju ’s Algorithm",
