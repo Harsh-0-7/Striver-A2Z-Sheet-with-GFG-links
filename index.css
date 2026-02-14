@@ -165,6 +165,7 @@ h1 {
 .progress.is-mid .bar { background: var(--progress-mid); }
 .progress.is-high .bar { background: var(--progress-high); }
 .progress.is-done .bar { background: var(--progress-done); }
+:root[data-theme="dark"] .progress { background: #ffffff; border: 0; }
 .progress-text { font-size: 12px; }
 
 /* =============================================
@@ -477,3 +478,5 @@ li { list-style: none; margin: 8px 0; line-height: 1.3; }
   .links { justify-content: flex-start; }
 }
 /* (Removed unused text utilities) */
+/* Ensure dark mode progress track has no border and white unfilled background */
+:root[data-theme="dark"] .progress { background: #ffffff !important; border: 0 !important; }
