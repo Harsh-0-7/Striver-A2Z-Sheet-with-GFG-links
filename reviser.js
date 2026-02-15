@@ -167,6 +167,7 @@ function renderDueLists() {
   function openProblem(key) {
     var meta = state.dataIndex[key];
     if (meta) {
+      if (window.__setView) window.__setView('sheet');
       var step = String(meta.step || '');
       var sub = String(meta.substep || '');
       var stepDetails = document.querySelector('#content > details[data-step="' + step + '"]');

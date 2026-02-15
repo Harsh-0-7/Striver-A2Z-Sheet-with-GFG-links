@@ -13,53 +13,94 @@
     <script src="https://unpkg.com/cal-heatmap/dist/plugins/Tooltip.min.js" defer></script>
   </head>
   <body>
-    <div class="wrap">
-      <header class="site-header">
-        <h1>Striver A2Z DSA Sheet</h1>
-        <section class="global-progress" aria-label="Progress overview">
-          <div class="progress global" role="progressbar" aria-label="Overall progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0 solved of 0 (0%)">
-            <div class="bar" style="width:0%"></div>
-          </div>
-          <div class="progress-text muted" role="status" aria-live="polite"></div>
-        </section>
-        <nav class="filters" aria-label="Quick filters and theme">
-          <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true" aria-controls="content">All</button>
-          <button type="button" class="filter-btn" data-filter="unsolved" aria-pressed="false" aria-controls="content">Unsolved</button>
-          <button type="button" class="filter-btn" data-filter="solved" aria-pressed="false" aria-controls="content">Solved</button>
-          <button type="button" id="theme-toggle" class="filter-btn theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">🌙 Dark</button>
-        </nav>
-      </header>
-      <section id="reviser" class="reviser" aria-label="DSA reviser">
-        <div class="reviser-header">
+    <div class="app">
+      <header class="topbar site-header">
+        <div class="brand">
+          <span class="logo-dot"></span>
           <div>
-            <h2>Reviser</h2>
-            <p class="muted">Spaced reminders: 1, 7, 30 days after solving.</p>
-          </div>
-          <div class="reviser-today">
-            <span class="muted">Solved today</span>
-            <strong data-heatmap-today>0</strong>
+            <p class="brand-title">Striver A2Z</p>
+            <p class="brand-subtitle">DSA Mastery Tracker</p>
           </div>
         </div>
-        <div class="card heatmap-card">
-          <div class="heatmap-header">
-            <h3>Last 30 days</h3>
-            <div class="heatmap-legend muted">Darker means more solved</div>
+        <button type="button" id="theme-toggle" class="ghost-btn" aria-pressed="false" aria-label="Toggle dark mode">🌙 Dark</button>
+      </header>
+
+      <div class="layout">
+        <aside class="sidebar" aria-label="Navigation and filters">
+          <div class="hero-card">
+            <h1>Progress, without the noise.</h1>
+            <p class="muted">Track your A2Z journey, revisit the right problems, and build durable recall.</p>
           </div>
-          <div class="reviser-heatmap" id="reviser-heatmap" aria-label="Problems solved heatmap"></div>
-        </div>
-        <div class="reviser-grid">
-          <div class="card">
-            <h3>Due Today</h3>
-            <ul class="reviser-due"></ul>
+
+          <section class="global-progress" aria-label="Progress overview">
+            <div class="progress global" role="progressbar" aria-label="Overall progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0 solved of 0 (0%)">
+              <div class="bar" style="width:0%"></div>
+            </div>
+            <div class="progress-text muted" role="status" aria-live="polite"></div>
+          </section>
+
+          <nav class="quick-links" aria-label="Views">
+            <p class="nav-label">Views</p>
+            <button type="button" class="nav-link is-active" data-view="reviser" aria-pressed="true">Reviser</button>
+            <button type="button" class="nav-link" data-view="sheet" aria-pressed="false">Sheet</button>
+          </nav>
+
+          <nav class="filters view-only-sheet is-hidden" aria-label="Quick filters">
+            <p class="nav-label">Filters</p>
+            <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true" aria-controls="content">All</button>
+            <button type="button" class="filter-btn" data-filter="unsolved" aria-pressed="false" aria-controls="content">Unsolved</button>
+            <button type="button" class="filter-btn" data-filter="solved" aria-pressed="false" aria-controls="content">Solved</button>
+          </nav>
+        </aside>
+
+        <main class="main">
+          <div id="view-reviser" class="view-panel" data-view="reviser">
+            <section id="reviser" class="reviser" aria-label="DSA reviser">
+              <div class="reviser-header">
+                <div>
+                  <h2>Reviser</h2>
+                  <p class="muted">Spaced reminders: 1, 7, 30 days after solving.</p>
+                </div>
+                <div class="reviser-today">
+                  <span class="muted">Solved today</span>
+                  <strong data-heatmap-today>0</strong>
+                </div>
+              </div>
+              <div class="card heatmap-card">
+                <div class="heatmap-header">
+                  <h3>Last 30 days</h3>
+                  <div class="heatmap-legend muted">Darker means more solved</div>
+                </div>
+                <div class="reviser-heatmap" id="reviser-heatmap" aria-label="Problems solved heatmap"></div>
+              </div>
+              <div class="reviser-grid">
+                <div class="card">
+                  <h3>Due Today</h3>
+                  <ul class="reviser-due"></ul>
+                </div>
+                <div class="card">
+                  <h3>Upcoming</h3>
+                  <ul class="reviser-upcoming"></ul>
+                </div>
+              </div>
+            </section>
           </div>
-          <div class="card">
-            <h3>Upcoming</h3>
-            <ul class="reviser-upcoming"></ul>
+
+          <div id="view-sheet" class="view-panel is-hidden" data-view="sheet">
+          <section class="sheet-header">
+            <div>
+              <h2>DSA Sheet</h2>
+              <p class="muted">Work through each step with focus. Progress updates instantly.</p>
+            </div>
+            <div class="total-pill" aria-live="polite"></div>
+          </section>
+
+            <div id="content" aria-live="polite"></div>
           </div>
-        </div>
-      </section>
-      <main id="content" aria-live="polite"></main>
+        </main>
+      </div>
     </div>
+
     <script type="module" src="./app.js"></script>
     <noscript>
       <p>Please enable JavaScript to view the data.</p>

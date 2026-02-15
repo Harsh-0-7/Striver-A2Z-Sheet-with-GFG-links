@@ -25,6 +25,8 @@ function setGlobalTitleCount(done, total) {
   var el = ensureTitleCountEl();
   if (!el) return;
   el.textContent = '(' + String(done) + '/' + String(total) + ')';
+  var pill = document.querySelector('.total-pill');
+  if (pill) pill.textContent = done + ' solved of ' + total + ' (' + (total ? Math.round((done / total) * 100) : 0) + '%)';
 }
 
 function refreshGlobalTitleCountFromState() {
@@ -129,6 +131,36 @@ function setupFilters(content) {
   applyFilter(current);
 }
 
+function setupViews() {
+  var nav = document.querySelector('.quick-links');
+  if (!nav) return;
+  var buttons = Array.prototype.slice.call(nav.querySelectorAll('.nav-link'));
+  if (!buttons.length) return;
+  var panels = Array.prototype.slice.call(document.querySelectorAll('.view-panel'));
+  var sheetOnly = Array.prototype.slice.call(document.querySelectorAll('.view-only-sheet'));
+  function setView(view) {
+    buttons.forEach(function (b) {
+      var on = b.dataset.view === view;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    panels.forEach(function (p) {
+      var match = p.dataset.view === view;
+      p.classList.toggle('is-hidden', !match);
+    });
+    sheetOnly.forEach(function (el) {
+      el.classList.toggle('is-hidden', view !== 'sheet');
+    });
+  }
+  window.__setView = setView;
+  nav.addEventListener('click', function (e) {
+    var btn = e.target.closest('.nav-link');
+    if (!btn) return;
+    setView(btn.dataset.view);
+  });
+  setView('reviser');
+}
+
 function showLoading() {
   var content = document.getElementById('content');
   if (content) content.setAttribute('aria-busy', 'true');
@@ -219,6 +251,9 @@ async function main() {
 
     // Theme toggle
     setupTheme();
+
+    // Views
+    setupViews();
   } else {
     content.textContent = 'No data found.';
   }
