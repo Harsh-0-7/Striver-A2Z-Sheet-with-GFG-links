@@ -715,8 +715,8 @@ li { list-style: none; margin: 8px 0; line-height: 1.3; }
 }
 /* Dark mode: when checked, keep white box and use brand-colored tick */
 :root[data-theme="dark"] .title-cell input[type="checkbox"]:checked {
-  background: var(--brand);
-  border-color: var(--brand);
+  background: var(--green-300);
+  border-color: var(--green-300);
 }
 :root[data-theme="dark"] .title-cell input[type="checkbox"]:checked::after {
   border-right-color: #ffffff;
