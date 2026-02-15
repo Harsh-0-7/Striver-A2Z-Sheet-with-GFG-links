@@ -229,7 +229,7 @@ function renderDueLists() {
       btn.addEventListener('click', function () {
         recordReview(it.key);
         saveJson(REVISER_KEY, state.store);
-        renderAll();
+        withPreservedScroll(renderAll);
       });
       actions.appendChild(btn);
       li.appendChild(title);
@@ -245,6 +245,14 @@ function renderDueLists() {
 function renderAll() {
   renderHeatmap();
   renderDueLists();
+}
+
+function withPreservedScroll(fn) {
+  var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+  fn();
+  requestAnimationFrame(function () {
+    window.scrollTo({ top: y, left: 0, behavior: 'auto' });
+  });
 }
 
 export function initReviser(rootEl, data) {
@@ -269,5 +277,5 @@ export function onProblemToggle(meta, checked) {
   if (checked) upsertItem(meta);
   else removeItem(meta.key);
   saveJson(REVISER_KEY, state.store);
-  renderAll();
+  withPreservedScroll(renderAll);
 }
