@@ -1,6 +1,7 @@
 import { STORE_PREFIX, loadData, preloadCounts, groupByStep } from './data.js';
 import { renderList } from './render.js';
 import { updateCountEl, renderAllCounts, updateProgressBars } from './progress.js';
+import { initReviser, onProblemToggle } from './reviser.js';
 
 var gState = { grouped: null, counts: { steps: {}, subs: {} } };
 var THEME_KEY = 'a2z:theme';
@@ -161,6 +162,9 @@ async function main() {
     refreshGlobalTitleCountFromState();
     updateProgressBars(gState);
 
+    // Reviser setup
+    initReviser(document.getElementById('reviser'), DATA);
+
     // Sticky offset
     setupStickyOffset();
 
@@ -182,6 +186,12 @@ async function main() {
         updateCountEl(gState, 'sub', step, sub);
         refreshGlobalTitleCountFromState();
         updateProgressBars(gState);
+        onProblemToggle({
+          key: key,
+          title: li.dataset.title || '',
+          step: step,
+          sub: sub
+        }, e.target.checked);
       }
     });
 

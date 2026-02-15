@@ -6,6 +6,11 @@
     <title>Striver A2Z DSA Sheet</title>
     <link rel="preload" href="index.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="index.css" /></noscript>
+    <link rel="stylesheet" href="https://unpkg.com/cal-heatmap/dist/cal-heatmap.css" />
+    <script src="https://d3js.org/d3.v7.min.js" defer></script>
+    <script src="https://unpkg.com/cal-heatmap/dist/cal-heatmap.min.js" defer></script>
+    <script src="https://unpkg.com/@popperjs/core@2" defer></script>
+    <script src="https://unpkg.com/cal-heatmap/dist/plugins/Tooltip.min.js" defer></script>
   </head>
   <body>
     <div class="wrap">
@@ -24,6 +29,35 @@
           <button type="button" id="theme-toggle" class="filter-btn theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">🌙 Dark</button>
         </nav>
       </header>
+      <section id="reviser" class="reviser" aria-label="DSA reviser">
+        <div class="reviser-header">
+          <div>
+            <h2>Reviser</h2>
+            <p class="muted">Spaced reminders: 1, 7, 30 days after solving.</p>
+          </div>
+          <div class="reviser-today">
+            <span class="muted">Solved today</span>
+            <strong data-heatmap-today>0</strong>
+          </div>
+        </div>
+        <div class="card heatmap-card">
+          <div class="heatmap-header">
+            <h3>Last 30 days</h3>
+            <div class="heatmap-legend muted">Darker means more solved</div>
+          </div>
+          <div class="reviser-heatmap" id="reviser-heatmap" aria-label="Problems solved heatmap"></div>
+        </div>
+        <div class="reviser-grid">
+          <div class="card">
+            <h3>Due Today</h3>
+            <ul class="reviser-due"></ul>
+          </div>
+          <div class="card">
+            <h3>Upcoming</h3>
+            <ul class="reviser-upcoming"></ul>
+          </div>
+        </div>
+      </section>
       <main id="content" aria-live="polite"></main>
     </div>
     <script type="module" src="./app.js"></script>

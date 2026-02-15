@@ -47,9 +47,11 @@ export function renderList(container, data, gState) {
             cb.type = 'checkbox';
             var key = makeKey(it);
             cb.dataset.key = key;
+            li.dataset.key = key;
             try { cb.checked = localStorage.getItem(STORE_PREFIX + key) === '1'; } catch (e) {}
             titleCell.appendChild(cb);
             var title = it.title || '(untitled)';
+            li.dataset.title = title;
             if (it.article) {
               var a = document.createElement('a');
               a.href = String(it.article);
