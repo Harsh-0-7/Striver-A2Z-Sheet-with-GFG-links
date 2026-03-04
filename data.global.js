@@ -656,6 +656,7 @@ window.data = [
     substepTitle: "Medium",
     checkboxId: "atoz_dsa_55",
     title: "Print the subarray with maximum sum",
+    gfg:"https://www.geeksforgeeks.org/problems/maximum-sub-array5443/",
     article:
       "https://takeuforward.org/data-structure/kadanes-algorithm-maximum-subarray-sum-in-an-array/",
     solution:

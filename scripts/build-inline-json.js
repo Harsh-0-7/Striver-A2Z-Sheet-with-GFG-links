@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
- * Build step: inline minified JSON data into index.html
+ * Build step: write minified JSON data, optionally inline into index.html
  * - Reads data from data.global.js (window.data = [...];)
  * - Writes data.min.json (minified JSON)
- * - Replaces the contents of <script type="application/json" id="a2z-json">...</script>
+ * - If present, replaces the contents of <script type="application/json" id="a2z-json">...</script>
  *
  * Usage: node scripts/build-inline-json.js
  */
@@ -46,9 +46,12 @@ function readWindowDataArray(js) {
 function inlineIntoHtml(html, minJson) {
   const re = /(<script\s+type="application\/json"\s+id="a2z-json">)([\s\S]*?)(<\/script>)/i;
   if (!re.test(html)) {
-    throw new Error('index.html does not contain <script type="application/json" id="a2z-json">');
+    return { html, inlined: false };
   }
-  return html.replace(re, (_, p1, _old, p3) => p1 + minJson + p3);
+  return {
+    html: html.replace(re, (_, p1, _old, p3) => p1 + minJson + p3),
+    inlined: true,
+  };
 }
 
 (function main() {
@@ -57,7 +60,11 @@ function inlineIntoHtml(html, minJson) {
   const min = JSON.stringify(arr);
   fs.writeFileSync(dataJsonPath, min, 'utf8');
   const html = fs.readFileSync(indexPath, 'utf8');
-  const out = inlineIntoHtml(html, min);
-  fs.writeFileSync(indexPath, out, 'utf8');
-  console.log(`Wrote ${dataJsonPath} (${min.length} bytes) and inlined JSON into ${indexPath}`);
+  const { html: out, inlined } = inlineIntoHtml(html, min);
+  if (inlined) {
+    fs.writeFileSync(indexPath, out, 'utf8');
+    console.log(`Wrote ${dataJsonPath} (${min.length} bytes) and inlined JSON into ${indexPath}`);
+  } else {
+    console.log(`Wrote ${dataJsonPath} (${min.length} bytes). Skipped inline step: missing <script type="application/json" id="a2z-json"> in ${indexPath}`);
+  }
 })();
