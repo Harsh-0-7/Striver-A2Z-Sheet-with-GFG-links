@@ -4586,6 +4586,7 @@ window.data = [
       "https://takeuforward.org/data-structure/3-d-dp-ninja-and-his-friends-dp-13/",
     gfg: "https://bit.ly/3U9k6XT",
     solution: "https://www.youtube.com/watch?v=QGfn7JeXK54",
+    leetcode: "https://leetcode.com/problems/cherry-pickup-ii/"
   },
   {
     step: 16,
